@@ -1,0 +1,44 @@
+&control
+    calculation='nscf'
+    restart_mode='from_scratch',
+    prefix='CoO'
+    pseudo_dir = '/home/ruslan/qe-7.3/pseudo/all_pbesol_UPF_v1.5/'
+    outdir='./tmp'
+    verbosity='high'
+/
+&system
+    ibrav = 0,
+	celldm(1) = 8.00,
+    nat = 4,
+    ntyp = 3,
+    ecutwfc = 35.0,
+    ecutrho = 280.0,
+    nspin = 2,
+    starting_magnetization(1) = 0.5,
+    starting_magnetization(2) = -0.5,
+    occupations = 'smearing',
+    smearing = 'mv',
+    degauss = 0.02
+    nbnd = 40
+/
+&electrons
+    conv_thr = 1.d-10
+/
+ATOMIC_SPECIES
+ Co1  58.933  co_pbesol_v1.2.uspp.F.UPF
+ Co2  58.933  co_pbesol_v1.2.uspp.F.UPF
+   O  15.999  O.pbesol-n-kjpaw_psl.0.1.UPF   
+ATOMIC_POSITIONS {crystal}
+Co1      0.0000000000       0.0000000000       0.0000000000
+Co2      0.5000000000       0.5000000000       0.5000000000
+O        0.2500000000       0.2500000000       0.2500000000
+O        0.7500000000       0.7500000000       0.7500000000
+CELL_PARAMETERS {alat}
+  0.500380664   0.500380664   1.004818266
+  0.500380664   1.004818266   0.500380664
+  1.004818266   0.500380664   0.500380664
+K_POINTS {automatic}
+ 6 6 6 0 0 0
+HUBBARD {ortho-atomic}
+U Co1-3d 7.82
+U Co2-3d 7.82
